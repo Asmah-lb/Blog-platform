@@ -3,12 +3,9 @@ const mongoose = require('mongoose');
 
 const postSchema= new mongoose.Schema({
     author:{
-        type:String,
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User',
         reqired:true,
-    },
-    date:{
-        type:Date,
-        default:Date.now,
     }, 
     title:{
         type:String,
@@ -19,7 +16,10 @@ const postSchema= new mongoose.Schema({
         required:[true, "Post must have a content"]
     },
     image:String,
-      
+    date:{
+        type:Date,
+        default:Date.now,
+    },  
 });
 
 const Post = mongoose.model('Post',postSchema);

@@ -5,7 +5,7 @@ exports.createPost = async function(req, res){
     try{
         const createdPost = await Post.create({
             author:req.body.author,
-            description:req.body.description,
+            content:req.body.description,
             title:req.body.title,
         });
         console.log(req.body);
@@ -130,3 +130,21 @@ exports.deletePost = async function (req,res){
         })
     }
 };
+
+// exports.postByAuthor = async function (req,res) {
+//     try{
+//         const myPosts= await Post.find({author: req.user._id});
+
+//         res.status(200).json({
+//                 status:'success',
+//                 data:{
+//                     posts:myPosts
+//                 }
+//             })
+//     } catch(err){
+//         res.status(400).json({
+//             status:'fail',
+//             message: err.message
+//         })
+//     } 
+// }

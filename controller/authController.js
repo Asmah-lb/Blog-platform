@@ -9,7 +9,7 @@ exports.signupUser = async function (req, res) {
 
     const isEmailExisting = await User.findOne({ email });
     if (isEmailExisting) {
-      return res.json({ message: "Email already taken!" });
+      return res.json({ message: "Email is already taken!" });
     }
 
     const saltRound = 10;
