@@ -35,7 +35,7 @@ exports.uploadImage = async function (req,res){
         const post = await Post.findOne({id: req.params.id, author: req.user._id});
         const imageFile = `${post.title.split('').join('-').toLowerCase()}-${Date.now()}.jpeg`;
     
-        await sharp(req.file.buffer).resize(750, 750).toFormat("jpeg").jpeg({ qualify: 80 }).toFile(`public/assets/${imageFile}`);
+        await sharp(req.file.buffer).resize(750, 750).toFormat("jpeg").jpeg({ qualify: 80 }).toFile(`public/post/${imageFile}`);
 
         post.image = imageFile;
         await user.save({ validateBeforeSave: false });
@@ -131,20 +131,20 @@ exports.deletePost = async function (req,res){
     }
 };
 
-// exports.postByAuthor = async function (req,res) {
-//     try{
-//         const myPosts= await Post.find({author: req.user._id});
+exports.postByAuthor = async function (req,res) {
+    try{
+        const myPosts= await Post.find({author: req.user._id});
 
-//         res.status(200).json({
-//                 status:'success',
-//                 data:{
-//                     posts:myPosts
-//                 }
-//             })
-//     } catch(err){
-//         res.status(400).json({
-//             status:'fail',
-//             message: err.message
-//         })
-//     } 
-// }
+        res.status(200).json({
+                status:'success',
+                data:{
+                    posts:myPosts
+                }
+            })
+    } catch(err){
+        res.status(400).json({
+            status:'fail',
+            message: err.message
+        })
+    } 
+}
