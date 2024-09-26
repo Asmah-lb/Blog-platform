@@ -8,8 +8,8 @@ const { uploadToServer } = require("../middlewares/multer");
 const router = express.Router();
 
 router.get('/:id', postController.getSinglePosts)
-router.get('/get-all-posts',postController.getAllPosts);
-router.get('/post-by-author', protectedRoute,postController.postByAuthor)
+router.get('/get-all-posts', postController.getAllPosts);
+router.get('/post-by-author', protectedRoute, postController.postByAuthor)
 
 router.post('/', protectedRoute, postController.createPost);
 

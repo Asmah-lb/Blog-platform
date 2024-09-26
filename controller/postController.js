@@ -1,11 +1,11 @@
-
+const sharp = require("sharp");
 const Post = require('../model/postModel.js');
 
 exports.createPost = async function(req, res){
     try{
         const createdPost = await Post.create({
             author:req.body.author,
-            content:req.body.description,
+            content:req.body.content,
             title:req.body.title,
         });
         console.log(req.body);
@@ -95,7 +95,8 @@ exports.getSinglePosts = async function (req,res){
 
 exports.editPost = async function (req,res){
     try{
-        const posts= await Post.findByIdAndUpdate(req.params.id, req.body, {runValidators:true, new: true}
+        const posts= await Post.findByIdAndUpdate(req.params.id, req.body,
+             {runValidators:true, new: true}
 
         );
 
@@ -133,6 +134,7 @@ exports.deletePost = async function (req,res){
 
 exports.postByAuthor = async function (req,res) {
     try{
+        console.log(req.user._id)
         const myPosts= await Post.find({author: req.user._id});
 
         res.status(200).json({

@@ -28,6 +28,7 @@ exports.signupUser = async function (req, res) {
       data: {
         user: createdUser,
       },
+      alert: 'Signup Successfully',
     });
   } catch (err) {
     res.status(400).json({
@@ -71,7 +72,6 @@ exports.loginUser = async function (req, res) {
       token: token,
     });
 
-    // Blog;
   } catch (err) {
     res.status(400).json({
       status: "fail",
