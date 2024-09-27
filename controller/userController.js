@@ -1,6 +1,6 @@
 const sharp = require("sharp");
 
-const User = require('../model/userModel');
+const User = require("../model/userModel");
 
 exports.updateProfile = async function (req, res) {
   try {
@@ -24,7 +24,6 @@ exports.updateProfile = async function (req, res) {
         user,
       },
     });
-
   } catch (err) {
     res.status(400).json({
       status: "fail",
