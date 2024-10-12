@@ -35,9 +35,9 @@ exports.uploadImage = async function (req, res) {
     }
 
     const post = await Post.findOne({
-      id: req.params.id,
-      author: req.user._id,
+      _id: req.params.id
     });
+    console.log(post)
     const imageFile = `${post.title
       .split("")
       .join("-")
@@ -50,7 +50,7 @@ exports.uploadImage = async function (req, res) {
       .toFile(`public/assets/post/${imageFile}`);
 
     post.image = imageFile;
-    await user.save({ validateBeforeSave: false });
+    await post.save({ validateBeforeSave: false });
 
     res.status(200).json({
       status: "success",
@@ -106,12 +106,12 @@ exports.getAllPosts = async function (req, res) {
 
 exports.getSinglePosts = async function (req, res) {
   try {
-    const posts = await Post.findById(req.params.id);
+    const post = await Post.findById(req.params.id);
 
     res.status(200).json({
       status: "success",
       data: {
-        posts,
+        post,
       },
     });
   } catch (err) {

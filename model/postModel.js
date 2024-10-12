@@ -11,6 +11,9 @@ const postSchema= new mongoose.Schema({
         type:String,
         required:true,
     },
+    subTitle:{
+        type:String
+    },
     content:{
         type:String,
         required:[true, "Post must have a content"]

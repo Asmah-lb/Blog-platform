@@ -1,3 +1,5 @@
+const path = require('path');
+
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -12,6 +14,8 @@ const postRouter = require("./routes/postRoute.js");
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 const databaseUrl = process.env.DB_STRING;
 const port = process.env.PORT;
