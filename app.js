@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')))
 
 const databaseUrl = process.env.DB_STRING;
-const port = process.env.PORT;
+const port = process.env.PORT||3001;
 
 app.use(function (req, res, next) {
   console.log("I am fetching...");
