@@ -42,6 +42,7 @@ mongoose
   });
 
 //===========================//
-app.listen(port, "localhost", function () {
-  console.log("App is listening on a port 3001...");
+app.listen(port, function () { 
+  // i removed "localhost" after port,
+  console.log(`App is listening on a port ${port}`);
 });
