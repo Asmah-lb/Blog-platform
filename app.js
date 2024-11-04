@@ -12,9 +12,9 @@ const postRouter = require("./routes/postRoute.js");
 
 
 const app = express();
+
 app.use(express.json());
 app.use(cors());
-
 app.use(express.static(path.join(__dirname, 'public')))
 
 const databaseUrl = process.env.DB_STRING;
@@ -46,6 +46,3 @@ app.listen(port, function () {
   // i removed "localhost" after port,
   console.log(`App is listening on a port ${port}`);
 });
-
-
-// https://blog-platform-7q0v.onrender.com

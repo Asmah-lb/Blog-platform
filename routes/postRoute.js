@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get('/:id', postController.getSinglePosts)
 router.get('/', postController.getAllPosts);
-// router.get('/post-by-author', protectedRoute, postController.getPostByUser);
+router.get('/post-by-author/author', protectedRoute, postController.getPostByUser);
 
 router.post('/', protectedRoute, postController.createPost);
 
